@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { TailSpin } from "react-loading-icons";
+import { useTranslation } from "react-i18next"
 
 const FORM_API_URL =
   "https://getform.io/f/f1500fa8-4b19-4d85-a875-8acd684ccc95";
 
 function Contact() {
+  const { t } = useTranslation();
   const [formStatus, setFormStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState({
@@ -64,7 +66,7 @@ function Contact() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-first-name"
             >
-              Ime
+              {t("contactPage.name")}
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
@@ -80,7 +82,7 @@ function Contact() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-last-name"
             >
-              Priimek
+              {t("contactPage.surname")}
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -98,7 +100,7 @@ function Contact() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              E-mail
+              {t("contactPage.email")}
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -116,7 +118,7 @@ function Contact() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-password"
             >
-              Sporočilo
+              {t("contactPage.message")}
             </label>
             <textarea
               className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
@@ -136,12 +138,12 @@ function Contact() {
                 className="shadow bg-blueLight hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                 type="submit"
               >
-                Pošlji
+                {t("contactPage.send")}
               </button>
             )}
             {formStatus && (
               <div className="w-full my-4 text-center text-lg font-bold">
-                Sporočilo poslano!
+                {t("contactPage.success")}
               </div>
             )}
           </div>

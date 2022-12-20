@@ -1,0 +1,39 @@
+{
+    "title": "Vreme Koritnica",
+    "home": "Domov",
+    "graphs": "Grafi",
+    "location": "Lokacija",
+    "contact": "Kontakt",
+    "homePage": {
+        "currentConditions": "Trenutne razmere",
+        "todaysDetailsTable": "Današnji podatki podrobneje",
+        "refreshTime": "Čas osvežitve"
+    },
+    "graphsPage": {
+        "dailyGraphs": "Dnevni grafi za dan"
+    },
+    "contactPage": {
+        "name": "Ime",
+        "surname": "Priimek",
+        "email": "E-mail",
+        "message": "Sporočilo",
+        "send": "Pošlji",
+        "success": "Sporočilo uspešno poslano!"
+    },
+    "table": {
+        "highest": "Najvišja vrednost",
+        "lowest": "Najnižja vrednost",
+        "average": "Povprečje"
+    },
+    "solarRadiation": "Sončno sevanje",
+    "windSpeed": "Hitrost vetra",
+    "windDir": "Smer vetra",
+    "temperature": "Temperatura",
+    "humidity": "Vlažnost",
+    "pressure": "Tlak",
+    "precipTotal": "Skupna količina padavin",
+    "intensity": "Intenzivnost",
+    "uv": "UV index",
+    "dewPoint": "Točka rosišča",
+    "hoursOfMesurments": "Ura meritev"
+}

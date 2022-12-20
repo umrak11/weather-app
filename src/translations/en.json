@@ -1,0 +1,39 @@
+{
+    "title": "Weather Koritnica",
+    "home": "Home",
+    "graphs": "Graphs",
+    "location": "Location",
+    "contact": "Contact",
+    "homePage": {
+        "currentConditions": "Current conditions",
+        "todaysDetailsTable": "Today's details table",
+        "refreshTime": "Last refresh"
+    },
+    "graphsPage": {
+        "dailyGraphs": "Daily graphs for"
+    },
+    "contactPage": {
+        "name": "Name",
+        "surname": "Surname",
+        "email": "E-mail",
+        "message": "Message",
+        "send": "Send",
+        "success": "Message sent successfully"
+    },
+    "table": {
+        "highest": "Highest",
+        "lowest": "Lowest",
+        "average": "Average"
+    },
+    "solarRadiation": "Solar radiation",
+    "windSpeed": "Wind speed",
+    "windDir": "Wind direction",
+    "temperature": "Temperature",
+    "humidity": "Humidity",
+    "pressure": "Pressure",
+    "precipTotal": "Precipitation",
+    "intensity": "Intensity",
+    "uv": "UV index",
+    "dewPoint": "Dew point",
+    "hoursOfMesurments": "Hours of measurements"
+}

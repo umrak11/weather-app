@@ -1,10 +1,24 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Transition } from "@headlessui/react";
 import { Link } from "@tanstack/react-router";
 import logo from "../assets/logo.svg";
+import en from "../assets/gb.svg";
+import sl from "../assets/si.svg";
 
 function Header() {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+
+  const home: string = t("home");
+  const graphs: string = t("graphs");
+  const contact: string = t("contact");
+  const location: string = t("location");
+
+  const onClickLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+  };
+
   return (
     <div>
       <nav className="bg-blue rounded-sm">
@@ -13,49 +27,57 @@ function Header() {
             <div className="w-full flex items-center justify-between">
               <Link to="/" className="flex flex-row items-center">
                 <img src={logo} className="h-8" />
-                <div className="ml-4 uppercase font-bold text-washedGreen text-lg">Vreme koritnica</div>
+                <div className="ml-4 uppercase font-bold text-washedGreen text-lg">
+                  {t("title")}
+                </div>
               </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link
                     to="/"
                     activeProps={{
-                      className: 'text-black',
+                      className: "text-black",
                     }}
                     className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Domov
+                    {home}
                   </Link>
 
                   <Link
                     to="/graphs"
                     activeProps={{
-                      className: 'text-black',
+                      className: "text-black",
                     }}
                     className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Grafi
+                    {graphs}
                   </Link>
 
                   <Link
                     to="/location"
                     activeProps={{
-                      className: 'text-black',
+                      className: "text-black",
                     }}
                     className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Lokacija
+                    {location}
                   </Link>
 
                   <Link
                     to="/contact"
                     activeProps={{
-                      className: 'text-black',
+                      className: "text-black",
                     }}
                     className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Kontakt
+                    {contact}
                   </Link>
+                  <button onClick={() => onClickLanguageChange("en")}>
+                    <img src={en} width={20} />
+                  </button>
+                  <button onClick={() => onClickLanguageChange("sl")}>
+                    <img src={sl} width={20} />
+                  </button>
                 </div>
               </div>
             </div>
@@ -121,42 +143,57 @@ function Header() {
                 <Link
                   to="/"
                   activeProps={{
-                    className: 'text-black',
+                    className: "text-black",
                   }}
                   className=" text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => setIsOpen(!isOpen)}
                 >
-                  Domov
+                  {home}
                 </Link>
 
                 <Link
                   to="/graphs"
                   activeProps={{
-                    className: 'text-black',
+                    className: "text-black",
                   }}
                   className=" text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => setIsOpen(!isOpen)}
                 >
-                  Grafi
+                  {graphs}
                 </Link>
 
                 <Link
                   to="/location"
                   activeProps={{
-                    className: 'text-black',
+                    className: "text-black",
                   }}
                   className="text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => setIsOpen(!isOpen)}
                 >
-                  Lokacija
+                  {location}
                 </Link>
 
                 <Link
                   to="/contact"
                   activeProps={{
-                    className: 'text-black',
+                    className: "text-black",
                   }}
                   className="text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => setIsOpen(!isOpen)}
                 >
-                  Kontakt
+                  {contact}
                 </Link>
+                <div className="ml-3">
+                  <button onClick={() => onClickLanguageChange("en")}>
+                    <img src={en} width={20} />
+                  </button>
+                  <button
+                    onClick={() => onClickLanguageChange("sl")}
+                    className="ml-4"
+                  >
+                    <img src={sl} width={20} />
+                  </button>
+                </div>
               </div>
             </div>
           )}

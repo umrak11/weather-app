@@ -6,6 +6,7 @@ import {
   WiNightRain,
   WiSunset,
 } from "react-icons/wi";
+import { useTranslation } from "react-i18next";
 import SummaryCard from "./SummaryCard";
 import { TbTemperature } from "react-icons/tb";
 import { useCurrentWeatherData } from "../../utils/useCurrentWeatherData";
@@ -14,14 +15,15 @@ import { TailSpin } from "react-loading-icons";
 
 function Summary() {
   const currentWeatherData = useCurrentWeatherData();
+  const { t } = useTranslation();
 
   if (currentWeatherData.isLoading) return <div className="flex justify-center"><TailSpin stroke="#009FF5" /></div>;
-  if (currentWeatherData.isError) return <div>Error</div>;
+  if (currentWeatherData.isError) return <div>{t('error')}</div>;
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">Trenutne razmere</h2>
-      <div className="text-sm my-3">Čas osvežitve: {currentWeatherData.data.dateTime}</div>
+      <h2 className="text-2xl font-bold mb-4">{t('homePage.currentConditions')}</h2>
+      <div className="text-sm my-3">{t('homePage.refreshTime')}: {currentWeatherData.data.dateTime}</div>
       <div className="grid grid-cols-2 lg:grid-cols-3 w-full gap-8 text-center">
         {Object.keys(currentWeatherData.data).map((key) => {
           const data = currentWeatherData.data[key];
@@ -30,7 +32,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="Temperatura"
+                  title={t('temperature')}
                   bgColor="bg-indigo-50"
                   icon={<TbTemperature />}
                   data={`${data} °C`}
@@ -40,7 +42,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="Vlaga"
+                  title={t('humidity')}
                   bgColor="bg-washedGreen"
                   icon={<WiHumidity />}
                   data={`${data} %`}
@@ -50,7 +52,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="Hitrost vetra"
+                  title={t('windSpeed')}
                   bgColor="bg-gray-50"
                   icon={<WiStrongWind />}
                   data={`${data} km/h`}
@@ -60,7 +62,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="Pritisk"
+                  title={t('pressure')}
                   bgColor="bg-red-50"
                   icon={<WiBarometer />}
                   data={`${data} hPa`}
@@ -70,7 +72,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="Sončno obsevanje"
+                  title={t('solarRadiation')}
                   bgColor="bg-yellow-100"
                   icon={<WiSunrise />}
                   data={`${data} W/m²`}
@@ -80,7 +82,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="UV indeks"
+                  title={t('uv')}
                   bgColor="bg-yellow-50"
                   icon={<WiSunset />}
                   data={data}
@@ -90,7 +92,7 @@ function Summary() {
               return (
                 <SummaryCard
                   key={key}
-                  title="Padavine"
+                  title={t('precipTotal')}
                   bgColor="bg-blue-50"
                   icon={<WiNightRain />}
                   data={`${data} mm`}

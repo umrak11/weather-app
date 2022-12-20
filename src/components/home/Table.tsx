@@ -1,4 +1,4 @@
-import { getEnvironmentData } from "worker_threads";
+import { useTranslation } from "react-i18next";
 
 type TableProps = {
   data: Weather;
@@ -50,6 +50,8 @@ type Metric = {
 
 //TODO: This can be done in more abstract way - make it more generic
 function Table(props: TableProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="overflow-x-auto">
       <div className="flex items-center justify-center font-sans">
@@ -60,13 +62,13 @@ function Table(props: TableProps) {
                 <tr className="text-gray-600 uppercase text-sm leading-normal">
                   <th className="py-3 px-6 text-left"></th>
                   <th className="py-3 px-6 text-left bg-gray-200">
-                    Najvišja vrednost
+                    {t("table.highest")}
                   </th>
                   <th className="py-3 px-6 text-left bg-gray-200">
-                    Najnižja vrednost
+                    {t("table.lowest")}
                   </th>
                   <th className="py-3 px-6 text-left bg-gray-200">
-                    Povprečna vrednost
+                    {t("table.average")}
                   </th>
                 </tr>
               </thead>
@@ -74,7 +76,7 @@ function Table(props: TableProps) {
                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                   <td className="py-3 px-6 text-left whitespace-nowrap">
                     <div className="flex items-center">
-                      <span className="font-bold">Temperatura</span>
+                      <span className="font-bold">{t('temperature')}</span>
                     </div>
                   </td>
                   <td className="py-3 px-6 text-left">
@@ -96,7 +98,7 @@ function Table(props: TableProps) {
                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                   <td className="py-3 px-6 text-left whitespace-nowrap">
                     <div className="flex items-center">
-                      <span className="font-bold">Rosišče</span>
+                      <span className="font-bold">{t('dewPoint')}</span>
                     </div>
                   </td>
                   <td className="py-3 px-6 text-left">
@@ -118,7 +120,7 @@ function Table(props: TableProps) {
                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                   <td className="py-3 px-6 text-left whitespace-nowrap">
                     <div className="flex items-center">
-                      <span className="font-bold">Vlaga</span>
+                      <span className="font-bold">{t('humidity')}</span>
                     </div>
                   </td>
                   <td className="py-3 px-6 text-left">
@@ -140,7 +142,7 @@ function Table(props: TableProps) {
                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                   <td className="py-3 px-6 text-left whitespace-nowrap">
                     <div className="flex items-center">
-                      <span className="font-bold">Tlak</span>
+                      <span className="font-bold">{t('pressure')}</span>
                     </div>
                   </td>
                   <td className="py-3 px-6 text-left">
@@ -168,7 +170,7 @@ function Table(props: TableProps) {
                 <tr className="border-b border-gray-200 hover:bg-gray-100">
                   <td className="py-3 px-6 text-left whitespace-nowrap">
                     <div className="flex items-center">
-                      <span className="font-bold">Veter</span>
+                      <span className="font-bold">{t('windSpeed')}</span>
                     </div>
                   </td>
                   <td className="py-3 px-6 text-left">
