@@ -4,19 +4,17 @@ import translationEnglish from "./translations/en.json";
 import translationSlovenian from "./translations/sl.json";
 
 const resources = {
-    en: {
-        translation: translationEnglish,
-    },
-    sl: {
-        translation: translationSlovenian,
-    },
-}
+  en: {
+    translation: translationEnglish,
+  },
+  sl: {
+    translation: translationSlovenian,
+  },
+};
 
-i18next
-.use(initReactI18next)
-.init({
+i18next.use(initReactI18next).init({
   resources,
-  lng:"en", //default language
+  lng: "sl", //default language
 });
 
 export default i18next;
