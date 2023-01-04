@@ -2,8 +2,6 @@ import { useState } from "react";
 import { TailSpin } from "react-loading-icons";
 import { useTranslation } from "react-i18next"
 
-const FORM_API_URL =
-  "https://getform.io/f/f1500fa8-4b19-4d85-a875-8acd684ccc95";
 
 function Contact() {
   const { t } = useTranslation();
@@ -37,7 +35,7 @@ function Contact() {
       formData.append(key, value);
     });
 
-    fetch(FORM_API_URL, {
+    fetch(import.meta.env.VITE_FORM_API_URL, {
       method: "POST",
       body: formData,
       headers: {
