@@ -7,7 +7,7 @@ The Weather APP is a React-based application for my personal weather station bas
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the npm or yarn to install.
 
 ```bash
 npm install
