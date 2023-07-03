@@ -6,8 +6,6 @@ function Home() {
   return (
     <>
       <Summary />
-      <Divider margin={DividerMargin.Md} color={DividerColor.Gray} />
-      <DailyTable />
     </>
   );
 }
