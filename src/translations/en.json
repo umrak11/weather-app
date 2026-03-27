@@ -2,6 +2,7 @@
     "title": "Weather Koritnica",
     "home": "Home",
     "graphs": "Graphs",
+    "history": "History",
     "location": "Location",
     "contact": "Contact",
     "homePage": {
@@ -10,7 +11,16 @@
         "refreshTime": "Last refresh"
     },
     "graphsPage": {
-        "dailyGraphs": "Daily graphs for"
+        "title": "Graphs",
+        "dailyGraphs": "Daily graphs for",
+        "today": "Today",
+        "week": "7 Days",
+        "summary": "7-day summary"
+    },
+    "historyPage": {
+        "title": "History",
+        "prevDay": "Previous day",
+        "nextDay": "Next day"
     },
     "contactPage": {
         "name": "Name",
@@ -23,17 +33,30 @@
     "table": {
         "highest": "Highest",
         "lowest": "Lowest",
-        "average": "Average"
+        "average": "Average",
+        "dailyTotals": "Daily totals"
     },
     "solarRadiation": "Solar radiation",
     "windSpeed": "Wind speed",
+    "windGust": "Wind gust",
     "windDir": "Wind direction",
+    "windChill": "Wind chill",
+    "heatIndex": "Heat index",
     "temperature": "Temperature",
     "humidity": "Humidity",
     "pressure": "Pressure",
     "precipTotal": "Precipitation",
+    "precipRate": "Rain rate",
     "intensity": "Intensity",
     "uv": "UV index",
     "dewPoint": "Dew point",
-    "hoursOfMesurments": "Hours of measurements"
+    "feelsLike": "Feels like",
+    "hoursOfMesurments": "Time",
+    "error": "Failed to load data",
+    "compass": {
+        "N": "N", "NNE": "NNE", "NE": "NE", "ENE": "ENE",
+        "E": "E", "ESE": "ESE", "SE": "SE", "SSE": "SSE",
+        "S": "S", "SSW": "SSW", "SW": "SW", "WSW": "WSW",
+        "W": "W", "WNW": "WNW", "NW": "NW", "NNW": "NNW"
+    }
 }

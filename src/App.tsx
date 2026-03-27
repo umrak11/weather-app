@@ -15,15 +15,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router}>
-        <div className="flex justify-center">
-          <div className="container">
-            <Header />
-            <main className="p-8 border-b-2 border-gray-100">
-              <Outlet />
-            </main>
-
-            <Footer />
-          </div>
+        <div className="min-h-screen" style={{ backgroundColor: "#1e293b" }}>
+          <Header />
+          <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <Outlet />
+          </main>
+          <Footer />
         </div>
       </RouterProvider>
     </QueryClientProvider>

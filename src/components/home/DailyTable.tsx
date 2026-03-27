@@ -13,12 +13,17 @@ function DailyTable() {
         <TailSpin stroke="#009FF5" />
       </div>
     );
-  if (dailyTable.isError) return <div>{t('error')}</div>;
+  if (dailyTable.isError) return <div className="text-red-400">{t('error')}</div>;
+
+  const raw = dailyTable.data;
+  const tableData = Array.isArray(raw) ? raw[0] : raw;
+
+  if (!tableData?.temperatureHigh) return null;
 
   return (
     <div className="daily-table">
-      <h2 className="text-2xl font-bold mb-4">{t('homePage.todaysDetailsTable')}</h2>
-      <Table data={dailyTable.data} />
+      <h2 className="text-sm font-medium text-slate-400 uppercase tracking-wider mb-4">{t('homePage.todaysDetailsTable')}</h2>
+      <Table data={tableData} />
     </div>
   );
 }

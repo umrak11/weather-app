@@ -2,6 +2,7 @@
     "title": "Vreme Koritnica",
     "home": "Domov",
     "graphs": "Grafi",
+    "history": "Zgodovina",
     "location": "Lokacija",
     "contact": "Kontakt",
     "homePage": {
@@ -10,7 +11,16 @@
         "refreshTime": "Čas osvežitve"
     },
     "graphsPage": {
-        "dailyGraphs": "Dnevni grafi za dan"
+        "title": "Grafi",
+        "dailyGraphs": "Dnevni grafi za dan",
+        "today": "Danes",
+        "week": "7 dni",
+        "summary": "7-dnevni pregled"
+    },
+    "historyPage": {
+        "title": "Zgodovina",
+        "prevDay": "Prejšnji dan",
+        "nextDay": "Naslednji dan"
     },
     "contactPage": {
         "name": "Ime",
@@ -23,17 +33,30 @@
     "table": {
         "highest": "Najvišja vrednost",
         "lowest": "Najnižja vrednost",
-        "average": "Povprečje"
+        "average": "Povprečje",
+        "dailyTotals": "Dnevni seštevki"
     },
     "solarRadiation": "Sončno sevanje",
     "windSpeed": "Hitrost vetra",
+    "windGust": "Sunki vetra",
     "windDir": "Smer vetra",
+    "windChill": "Občutena temperatura (mraz)",
+    "heatIndex": "Indeks vročine",
     "temperature": "Temperatura",
     "humidity": "Vlažnost",
     "pressure": "Tlak",
     "precipTotal": "Skupna količina padavin",
+    "precipRate": "Intenzivnost padavin",
     "intensity": "Intenzivnost",
     "uv": "UV index",
     "dewPoint": "Točka rosišča",
-    "hoursOfMesurments": "Ura meritev"
+    "feelsLike": "Občutena temperatura",
+    "hoursOfMesurments": "Ura meritev",
+    "error": "Napaka pri nalaganju podatkov",
+    "compass": {
+        "N": "S", "NNE": "SSV", "NE": "SV", "ENE": "VSV",
+        "E": "V", "ESE": "VJV", "SE": "JV", "SSE": "JJV",
+        "S": "J", "SSW": "JJZ", "SW": "JZ", "WSW": "ZJZ",
+        "W": "Z", "WNW": "ZSZ", "NW": "SZ", "NNW": "SSZ"
+    }
 }

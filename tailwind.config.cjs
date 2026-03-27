@@ -25,14 +25,24 @@ module.exports = {
       emerald: colors.emerald,
       indigo: colors.indigo,
       yellow: colors.yellow,
-      slate: colors.slate
+      slate: colors.slate,
+      cyan: colors.cyan,
+      orange: colors.orange,
+      purple: colors.purple,
+      teal: colors.teal,
+      sky: colors.sky,
+      green: colors.green,
+      amber: colors.amber,
+      violet: colors.violet,
+      rose: colors.rose,
+      lime: colors.lime,
     },
     backgroundColor: theme => theme('colors'),
     borderColor: theme => ({
       ...theme('colors'),
     }),
     fontFamily: {
-      'sans': ['Arima Madurai'],
+      'sans': ['Inter', 'system-ui', 'sans-serif'],
     },
     fontSize: {
       xs: '0.75rem', // 12px

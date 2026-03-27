@@ -1,7 +1,7 @@
 import LineChartContainer from "../chartTypes/LineChart";
 import { useTranslation } from "react-i18next";
 
-export default function PrecipChart(props: { chartsData: [] }) {
+export default function PrecipChart(props: { chartsData: []; xTickFormatter?: (v: string) => string }) {
   const {t} = useTranslation();
 
   const precipTotal: string = t('precipTotal');
@@ -14,17 +14,18 @@ export default function PrecipChart(props: { chartsData: [] }) {
       lines={[
         {
           dataKey: "precipTotal",
-          stroke: "#3C4856",
+          stroke: "#38bdf8",
           legend: precipTotal,
         },
         {
           dataKey: "precipRate",
-          stroke: "#508882",
+          stroke: "#818cf8",
           legend: intensity,
         },
       ]}
       yAxisLabel={`${precipTotal} (mm)`}
       xAxisLabel={t('hoursOfMesurments')}
+      xTickFormatter={props.xTickFormatter}
     />
   );
 }

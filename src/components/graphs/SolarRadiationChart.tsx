@@ -1,7 +1,7 @@
 import LineChartContainer from "../chartTypes/LineChart";
 import { useTranslation } from "react-i18next"
 
-export default function SolarRadiationChart(props: { chartsData: [] }) {
+export default function SolarRadiationChart(props: { chartsData: []; xTickFormatter?: (v: string) => string }) {
   const {t} = useTranslation();
 
   const solarRadiation: string = t('solarRadiation');
@@ -11,10 +11,11 @@ export default function SolarRadiationChart(props: { chartsData: [] }) {
       key={"solarRadiation"}
       data={props.chartsData}
       lines={[
-        { dataKey: "solarRadiation", stroke: "#FFB92F", legend: solarRadiation },
+        { dataKey: "solarRadiationHigh", stroke: "#eab308", legend: solarRadiation },
       ]}
       yAxisLabel={`${solarRadiation} (W/m²)`}
       xAxisLabel={t('hoursOfMesurments')}
+      xTickFormatter={props.xTickFormatter}
     />
   );
 }

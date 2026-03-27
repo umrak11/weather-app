@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TailSpin } from "react-loading-icons";
-import { useTranslation } from "react-i18next"
-
+import { useTranslation } from "react-i18next";
+import { MdOutlineEmail } from "react-icons/md";
 
 function Contact() {
   const { t } = useTranslation();
@@ -29,7 +29,6 @@ function Contact() {
 
     setLoading(true);
 
-    // TODO: Form validation
     const formData = new FormData();
     Object.entries(query).forEach(([key, value]) => {
       formData.append(key, value);
@@ -42,112 +41,115 @@ function Contact() {
         Accept: "application/json",
       },
     })
-      .then((response) => {
+      .then(() => {
         setFormStatus(true);
-        setQuery({
-          name: "",
-          surname: "",
-          email: "",
-          message: "",
-        });
+        setQuery({ name: "", surname: "", email: "", message: "" });
         setLoading(false);
       })
       .catch((error) => console.log(error));
   };
 
+  const inputClass =
+    "w-full bg-slate-800 text-slate-100 placeholder-slate-500 border border-slate-700 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-blue focus:ring-1 focus:ring-blue transition-colors duration-150";
+  const labelClass = "block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5";
+
   return (
     <div className="flex justify-center">
-      <form className="w-full max-w-lg" onSubmit={handleSubmit}>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-first-name"
-            >
-              {t("contactPage.name")}
-            </label>
-            <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-first-name"
-              type="text"
-              name="name"
-              value={query.name}
-              onChange={handleChange()}
-            />
-          </div>
-          <div className="w-full md:w-1/2 px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-last-name"
-            >
-              {t("contactPage.surname")}
-            </label>
-            <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name"
-              type="text"
-              name="surname"
-              value={query.surname}
-              onChange={handleChange()}
-            />
-          </div>
+      <div className="w-full max-w-lg">
+        <div className="flex items-center gap-3 mb-8">
+          <span className="text-3xl text-blue"><MdOutlineEmail /></span>
+          <h2 className="text-2xl font-bold text-white">{t("contact")}</h2>
         </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-password"
-            >
-              {t("contactPage.email")}
-            </label>
-            <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="email"
-              type="email"
-              name="email"
-              value={query.email}
-              onChange={handleChange()}
-            />
+
+        {formStatus ? (
+          <div className="bg-slate-800 border border-slate-700 rounded-xl p-8 text-center"
+               style={{ borderTop: "3px solid #009FF5" }}>
+            <div className="text-4xl mb-4">✓</div>
+            <p className="text-lg font-semibold text-white">{t("contactPage.success")}</p>
           </div>
-        </div>
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-password"
-            >
-              {t("contactPage.message")}
-            </label>
-            <textarea
-              className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
-              id="message"
-              name="message"
-              value={query.message}
-              onChange={handleChange()}
-            ></textarea>
-          </div>
-        </div>
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3">
-            {loading ? (
-              <TailSpin stroke="#009FF5" />
-            ) : (
-              <button
-                className="shadow bg-blueLight hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                type="submit"
-              >
-                {t("contactPage.send")}
-              </button>
-            )}
-            {formStatus && (
-              <div className="w-full my-4 text-center text-lg font-bold">
-                {t("contactPage.success")}
+        ) : (
+          <form
+            className="bg-slate-800 border border-slate-700 rounded-xl p-6 space-y-5"
+            style={{ borderTop: "3px solid #009FF5" }}
+            onSubmit={handleSubmit}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label className={labelClass} htmlFor="name">
+                  {t("contactPage.name")}
+                </label>
+                <input
+                  className={inputClass}
+                  id="name"
+                  type="text"
+                  name="name"
+                  value={query.name}
+                  onChange={handleChange()}
+                  required
+                />
               </div>
-            )}
-          </div>
-          <div className="md:w-2/3"></div>
-        </div>
-      </form>
+              <div>
+                <label className={labelClass} htmlFor="surname">
+                  {t("contactPage.surname")}
+                </label>
+                <input
+                  className={inputClass}
+                  id="surname"
+                  type="text"
+                  name="surname"
+                  value={query.surname}
+                  onChange={handleChange()}
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClass} htmlFor="email">
+                {t("contactPage.email")}
+              </label>
+              <input
+                className={inputClass}
+                id="email"
+                type="email"
+                name="email"
+                value={query.email}
+                onChange={handleChange()}
+                required
+              />
+            </div>
+
+            <div>
+              <label className={labelClass} htmlFor="message">
+                {t("contactPage.message")}
+              </label>
+              <textarea
+                className={`${inputClass} h-40 resize-none`}
+                id="message"
+                name="message"
+                value={query.message}
+                onChange={handleChange()}
+                required
+              />
+            </div>
+
+            <div className="pt-1">
+              {loading ? (
+                <div className="flex justify-center py-2">
+                  <TailSpin stroke="#009FF5" />
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full bg-blue hover:opacity-90 active:opacity-75 text-white font-semibold py-3 px-6 rounded-lg transition-opacity duration-150"
+                >
+                  {t("contactPage.send")}
+                </button>
+              )}
+            </div>
+          </form>
+        )}
+      </div>
     </div>
   );
 }

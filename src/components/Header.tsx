@@ -10,196 +10,97 @@ function Header() {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const home: string = t("home");
-  const graphs: string = t("graphs");
-  const contact: string = t("contact");
-  const location: string = t("location");
+  const changeLanguage = (lang: string) => i18n.changeLanguage(lang);
 
-  const onClickLanguageChange = (language: string) => {
-    i18n.changeLanguage(language);
-  };
+  const links = [
+    { to: "/", label: t("home") },
+    { to: "/graphs", label: t("graphs") },
+    { to: "/history", label: t("history") },
+    { to: "/location", label: t("location") },
+    { to: "/contact", label: t("contact") },
+  ];
 
   return (
-    <div>
-      <nav className="bg-blue rounded-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="w-full flex items-center justify-between">
-              <Link to="/" className="flex flex-row items-center">
-                <img src={logo} className="h-8" />
-                <div className="ml-4 uppercase font-bold text-washedGreen text-lg">
-                  {t("title")}
-                </div>
-              </Link>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
-                  <Link
-                    to="/"
-                    activeProps={{
-                      className: "text-black",
-                    }}
-                    className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {home}
-                  </Link>
+    <nav className="sticky top-0 z-50 border-b border-white/[0.1]" style={{ backgroundColor: "#1e293b" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
 
-                  <Link
-                    to="/graphs"
-                    activeProps={{
-                      className: "text-black",
-                    }}
-                    className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {graphs}
-                  </Link>
+          <Link to="/" className="flex items-center gap-2.5 shrink-0">
+            <img src={logo} className="h-6 opacity-90" />
+            <span className="text-sm font-semibold text-white tracking-tight">{t("title")}</span>
+          </Link>
 
-                  <Link
-                    to="/location"
-                    activeProps={{
-                      className: "text-black",
-                    }}
-                    className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {location}
-                  </Link>
-
-                  <Link
-                    to="/contact"
-                    activeProps={{
-                      className: "text-black",
-                    }}
-                    className="text-washedBlue px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {contact}
-                  </Link>
-                  <button onClick={() => onClickLanguageChange("en")}>
-                    <img src={en} width={20} />
-                  </button>
-                  <button onClick={() => onClickLanguageChange("sl")}>
-                    <img src={sl} width={20} />
-                  </button>
-                </div>
-              </div>
+          <div className="hidden md:flex items-center">
+            <div className="flex items-center">
+              {links.map(({ to, label }) => (
+                <Link
+                  key={to}
+                  to={to}
+                  className="text-sm text-slate-500 hover:text-slate-200 px-3 py-1 transition-colors duration-150"
+                  activeProps={{ className: "text-sm text-white px-3 py-1 font-medium" }}
+                >
+                  {label}
+                </Link>
+              ))}
             </div>
-            <div className="-mr-2 flex md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-washedBlue hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-              >
-                <span className="sr-only">Open main menu</span>
-                {!isOpen ? (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    className="block h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                )}
+
+            <div className="flex items-center gap-2 ml-5 pl-5 border-l border-white/[0.08]">
+              <button onClick={() => changeLanguage("en")} className="opacity-50 hover:opacity-100 transition-opacity" title="English">
+                <img src={en} width={18} className="rounded-sm" />
+              </button>
+              <button onClick={() => changeLanguage("sl")} className="opacity-50 hover:opacity-100 transition-opacity" title="Slovenščina">
+                <img src={sl} width={18} className="rounded-sm" />
               </button>
             </div>
           </div>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-slate-400 hover:text-white p-1.5 transition-colors"
+          >
+            <span className="sr-only">Menu</span>
+            {isOpen
+              ? <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              : <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+            }
+          </button>
         </div>
+      </div>
 
-        <Transition
-          show={isOpen}
-          enter="transition ease-out duration-100 transform"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="transition ease-in duration-75 transform"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          {(ref: any) => (
-            <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <Link
-                  to="/"
-                  activeProps={{
-                    className: "text-black",
-                  }}
-                  className=" text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {home}
-                </Link>
-
-                <Link
-                  to="/graphs"
-                  activeProps={{
-                    className: "text-black",
-                  }}
-                  className=" text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {graphs}
-                </Link>
-
-                <Link
-                  to="/location"
-                  activeProps={{
-                    className: "text-black",
-                  }}
-                  className="text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {location}
-                </Link>
-
-                <Link
-                  to="/contact"
-                  activeProps={{
-                    className: "text-black",
-                  }}
-                  className="text-washedBlue block px-3 py-2 rounded-md text-base font-medium"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {contact}
-                </Link>
-                <div className="ml-3">
-                  <button onClick={() => onClickLanguageChange("en")}>
-                    <img src={en} width={20} />
-                  </button>
-                  <button
-                    onClick={() => onClickLanguageChange("sl")}
-                    className="ml-4"
-                  >
-                    <img src={sl} width={20} />
-                  </button>
-                </div>
-              </div>
+      <Transition
+        show={isOpen}
+        enter="transition ease-out duration-100"
+        enterFrom="opacity-0 -translate-y-1"
+        enterTo="opacity-100 translate-y-0"
+        leave="transition ease-in duration-75"
+        leaveFrom="opacity-100 translate-y-0"
+        leaveTo="opacity-0 -translate-y-1"
+      >
+        {(ref: any) => (
+          <div ref={ref} className="md:hidden border-t border-white/[0.06] pb-3">
+            {links.map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white transition-colors"
+                activeProps={{ className: "block px-4 py-2.5 text-sm text-white font-medium" }}
+                onClick={() => setIsOpen(false)}
+              >
+                {label}
+              </Link>
+            ))}
+            <div className="flex items-center gap-3 px-4 pt-2.5 mt-1 border-t border-white/[0.06]">
+              <button onClick={() => changeLanguage("en")} className="opacity-50 hover:opacity-100 transition-opacity">
+                <img src={en} width={18} className="rounded-sm" />
+              </button>
+              <button onClick={() => changeLanguage("sl")} className="opacity-50 hover:opacity-100 transition-opacity">
+                <img src={sl} width={18} className="rounded-sm" />
+              </button>
             </div>
-          )}
-        </Transition>
-      </nav>
-    </div>
+          </div>
+        )}
+      </Transition>
+    </nav>
   );
 }
 
