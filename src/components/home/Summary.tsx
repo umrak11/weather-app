@@ -45,7 +45,7 @@ export default function Summary() {
 
   const metrics: MetricRow[] = [
     { title: t("temperature"),    accentColor: "#f97316", icon: <TbTemperature />,  data: `${d.temperature} °C` },
-    { title: t("feelsLike"),      accentColor: "#fb923c", icon: <WiThermometer />,  data: `${d.heatIndex ?? d.windChill} °C`, subtitle: d.heatIndex ? t("heatIndex") : t("windChill") },
+    { title: t("feelsLike"),      accentColor: "#fb923c", icon: <WiThermometer />,  data: `${d.heatIndex ?? d.windChill} °C`, subtitle: String(d.heatIndex ? t("heatIndex") : t("windChill")) },
     { title: t("dewPoint"),       accentColor: "#34d399", icon: <TbDroplet />,      data: `${d.dewPoint} °C` },
     { title: t("humidity"),       accentColor: "#22d3ee", icon: <WiHumidity />,     data: `${d.humidity} %` },
     { title: t("windSpeed"),      accentColor: "#60a5fa", icon: <WiStrongWind />,   data: `${d.windSpeed} km/h` },

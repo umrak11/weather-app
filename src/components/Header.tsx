@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Transition } from "@headlessui/react";
-import { Link } from "@tanstack/react-router";
+import { Link as RouterLink } from "@tanstack/react-router";
+const Link = RouterLink as any;
 import logo from "../assets/logo.svg";
 import en from "../assets/gb.svg";
 import sl from "../assets/si.svg";
@@ -82,6 +83,7 @@ function Header() {
               <Link
                 key={to}
                 to={to}
+                search={{}}
                 className="block px-4 py-2.5 text-sm text-slate-400 hover:text-white transition-colors"
                 activeProps={{ className: "block px-4 py-2.5 text-sm text-white font-medium" }}
                 onClick={() => setIsOpen(false)}

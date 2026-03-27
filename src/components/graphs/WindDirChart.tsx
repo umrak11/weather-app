@@ -73,7 +73,7 @@ export default function WindDirChart(props: { chartsData: [] }) {
           interval="preserveStartEnd"
         >
           <Label
-            value={t("hoursOfMesurments")}
+            value={String(t("hoursOfMesurments"))}
             position="insideBottom"
             offset={-15}
             style={{ fill: "#64748b", fontSize: 11 }}
@@ -84,7 +84,7 @@ export default function WindDirChart(props: { chartsData: [] }) {
           type="number"
           domain={[0, 360]}
           ticks={COMPASS_TICKS}
-          tickFormatter={(v) => COMPASS_TICK_KEYS[v] ? t(`compass.${COMPASS_TICK_KEYS[v]}`) : ""}
+          tickFormatter={(v) => COMPASS_TICK_KEYS[v] ? String(t(`compass.${COMPASS_TICK_KEYS[v]}`)) : ""}
           tick={{ fill: "#9ca3af", fontSize: 11 }}
           axisLine={{ stroke: "#4b5563" }}
           tickLine={false}

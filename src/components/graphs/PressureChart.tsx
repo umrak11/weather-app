@@ -6,15 +6,11 @@ export default function PressureChart(props: { chartsData: []; xTickFormatter?: 
 
   const pressure: string = t("pressure");
 
-  //TODO: Extract this to helper function / typed properties - properly without ts-ignore
-  // @ts-ignore
-  const minPressure = props.chartsData.reduce((prev: any, curr: any) => {
-    return prev.pressureMin < curr.pressureMin ? prev : curr;
-  }).pressureMin;
-  // @ts-ignore
-  const maxPressure = props.chartsData.reduce((prev: any, curr: any) => {
-    return prev.pressureMax > curr.pressureMax ? prev : curr;
-  }).pressureMax;
+  const data = props.chartsData as any[];
+  const minPressure = data.reduce((prev: any, curr: any) =>
+    prev.pressureMin < curr.pressureMin ? prev : curr, data[0])?.pressureMin ?? 0;
+  const maxPressure = data.reduce((prev: any, curr: any) =>
+    prev.pressureMax > curr.pressureMax ? prev : curr, data[0])?.pressureMax ?? 0;
 
   return (
     <LineChartContainer
