@@ -1,5 +1,8 @@
 {
-    "rewrites":  [
+    "rewrites": [
       {"source": "/(.*)", "destination": "/"}
-    ]
+    ],
+    "engines": {
+      "node": "24.x"
+    }
 }
